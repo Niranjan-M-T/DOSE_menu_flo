@@ -9,7 +9,12 @@ const state = {
 };
 
 async function initApp() {
+    document.body.classList.add('loading');
+
     try {
+        // Simulate a delay for demonstration purposes
+        await new Promise(resolve => setTimeout(resolve, 1500));
+
         const response = await fetch('data/menu.json');
         if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`);
@@ -24,6 +29,8 @@ async function initApp() {
         if (menuContent) {
             menuContent.innerHTML = '<p class="text-center text-red-500">Failed to load menu. Please try again later.</p>';
         }
+    } finally {
+        document.body.classList.remove('loading');
     }
 }
 
