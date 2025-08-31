@@ -9,7 +9,7 @@ const state = {
 };
 
 async function initApp() {
-  1`1
+
     document.body.classList.add('loading');
 
     try {
@@ -116,21 +116,6 @@ function setupEventListeners() {
         }
     });
 
-    viewMenuBtn?.addEventListener('click', (e) => {
-        e.preventDefault();
-        const jsConfetti = new JSConfetti();
-        jsConfetti.addConfetti({
-            confettiColors: [
-                '#F5F5DC', '#D2B48C', '#3E2723', '#6D4C41', '#D87D4A',
-            ],
-            confettiRadius: 5,
-            confettiNumber: 1000,
-        });
-
-        setTimeout(() => {
-            document.getElementById('menu').scrollIntoView({ behavior: 'smooth' });
-        }, 1000);
-    });
 }
 
 function findItemData(itemId, categoryName) {
