@@ -40,13 +40,16 @@
           "id": "spicy_chicken_burger",
           "name": "Spicy Chicken Burger",
           "description": "A crispy fried chicken thigh coated in a fiery spice blend, topped with jalapeño slaw and a cooling chipotle mayo. This burger packs a flavorful punch.",
-          "nutritional_info": "Calories: 580, Protein: 30g, Carbs: 50g, Fat: 30g"
+          "nutritional_info": "Calories: 580, Protein: 30g, Carbs: 50g, Fat: 30g",
+          "image": "assets/classic_dose_burger.png"
+
         },
         {
           "id": "veggie_portobello_burger",
           "name": "Veggie Portobello Burger",
           "description": "A large, marinated and grilled portobello mushroom cap with melted provolone cheese, roasted red peppers, and a basil pesto aioli on a whole wheat bun. A vegetarian delight.",
-          "nutritional_info": "Calories: 490, Protein: 15g, Carbs: 55g, Fat: 22g"
+          "nutritional_info": "Calories: 490, Protein: 15g, Carbs: 55g, Fat: 22g",
+          "image": "assets/classic_dose_burger.png"
         }
       ]
     },

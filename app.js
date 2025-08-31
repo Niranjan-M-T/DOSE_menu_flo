@@ -9,6 +9,7 @@ const state = {
 };
 
 async function initApp() {
+  1`1
     document.body.classList.add('loading');
 
     try {
@@ -30,7 +31,9 @@ async function initApp() {
             menuContent.innerHTML = '<p class="text-center text-red-500">Failed to load menu. Please try again later.</p>';
         }
     } finally {
+
         document.body.classList.remove('loading');
+
     }
 }
 
@@ -96,6 +99,7 @@ function setupEventListeners() {
     const modal = document.getElementById('item-modal');
     const closeModalBtn = document.getElementById('close-modal-btn');
     const menuContent = document.getElementById('menu-content');
+    const viewMenuBtn = document.getElementById('view-menu-btn');
 
     closeModalBtn?.addEventListener('click', closeModal);
     modal?.addEventListener('click', (e) => {
@@ -110,6 +114,22 @@ function setupEventListeners() {
             const { itemId, categoryName } = card.dataset;
             openModal(itemId, categoryName);
         }
+    });
+
+    viewMenuBtn?.addEventListener('click', (e) => {
+        e.preventDefault();
+        const jsConfetti = new JSConfetti();
+        jsConfetti.addConfetti({
+            confettiColors: [
+                '#F5F5DC', '#D2B48C', '#3E2723', '#6D4C41', '#D87D4A',
+            ],
+            confettiRadius: 5,
+            confettiNumber: 1000,
+        });
+
+        setTimeout(() => {
+            document.getElementById('menu').scrollIntoView({ behavior: 'smooth' });
+        }, 1000);
     });
 }
 
