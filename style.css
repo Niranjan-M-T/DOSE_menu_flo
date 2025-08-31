@@ -61,6 +61,11 @@ html {
     border-bottom-color: var(--color-accent-orange);
 }
 
+/* Add scroll margin to account for the sticky nav */
+#menu-content section {
+    scroll-margin-top: 6rem; /* Adjust this value based on the actual height of your sticky nav */
+}
+
 
 /* Menu Item Card */
 .menu-item-card {
