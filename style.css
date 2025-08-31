@@ -108,9 +108,31 @@ html {
     color: var(--color-coffee-dark);
 }
 
-/* Loader Styles */
+
+/* Full-page Loader Styles */
+#loader-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(245, 245, 220, 0.95); /* semi-transparent cream */
+    z-index: 9999;
+    display: none; /* Hidden by default */
+    justify-content: center;
+    align-items: center;
+}
+
+body.loading #loader-container {
+    display: flex;
+}
+
+body.loading {
+    overflow: hidden;
+}
+
 .pl {
-	margin: auto;
+
 	width: 12em;
 	height: 12em;
     color: var(--color-coffee-dark);

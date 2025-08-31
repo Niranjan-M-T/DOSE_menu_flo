@@ -9,7 +9,8 @@ const state = {
 };
 
 async function initApp() {
-    const loaderContainer = document.getElementById('loader-container');
+  1`1
+    document.body.classList.add('loading');
 
     try {
         // Simulate a delay for demonstration purposes
@@ -30,9 +31,9 @@ async function initApp() {
             menuContent.innerHTML = '<p class="text-center text-red-500">Failed to load menu. Please try again later.</p>';
         }
     } finally {
-        if (loaderContainer) {
-            loaderContainer.style.display = 'none';
-        }
+
+        document.body.classList.remove('loading');
+
     }
 }
 
