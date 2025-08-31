@@ -1,4 +1,4 @@
-export const menuData = {
+{
   "menu_categories": [
     {
       "category_name": "Starters",
@@ -7,19 +7,22 @@ export const menuData = {
           "id": "garlic_parmesan_fries",
           "name": "Garlic Parmesan Fries",
           "description": "Crispy golden fries tossed in savory garlic butter and a generous coating of grated Parmesan cheese, served with a zesty aioli dip. The perfect start to any meal.",
-          "nutritional_info": "Calories: 450, Protein: 8g, Carbs: 50g, Fat: 25g"
+          "nutritional_info": "Calories: 450, Protein: 8g, Carbs: 50g, Fat: 25g",
+          "image": "assets/garlic_parmesan_fries.png"
         },
         {
           "id": "bruschetta_duo",
           "name": "Bruschetta Duo",
           "description": "Toasted artisan bread slices, one topped with a classic mix of fresh tomatoes, basil, and garlic, the other with a creamy mushroom and thyme spread. A delightful taste of Italy.",
-          "nutritional_info": "Calories: 320, Protein: 7g, Carbs: 40g, Fat: 15g"
+          "nutritional_info": "Calories: 320, Protein: 7g, Carbs: 40g, Fat: 15g",
+          "image": "assets/bruschetta_duo.png"
         },
         {
           "id": "crispy_calamari_rings",
           "name": "Crispy Calamari Rings",
           "description": "Tender calamari rings lightly battered and fried to a perfect golden brown, served with a tangy marinara sauce and a fresh lemon wedge. An irresistible seaside classic.",
-          "nutritional_info": "Calories: 380, Protein: 18g, Carbs: 25g, Fat: 22g"
+          "nutritional_info": "Calories: 380, Protein: 18g, Carbs: 25g, Fat: 22g",
+          "image": "assets/crispy_calamari_rings.png"
         }
       ]
     },
@@ -30,7 +33,8 @@ export const menuData = {
           "id": "classic_dose_burger",
           "name": "Classic DOSE Burger",
           "description": "A juicy, flame-grilled 1/3 lb beef patty with melted American cheese, crisp lettuce, ripe tomatoes, onions, and our signature DOSE sauce on a toasted sesame bun. A timeless favorite.",
-          "nutritional_info": "Calories: 650, Protein: 35g, Carbs: 45g, Fat: 35g"
+          "nutritional_info": "Calories: 650, Protein: 35g, Carbs: 45g, Fat: 35g",
+          "image": "assets/classic_dose_burger.png"
         },
         {
           "id": "spicy_chicken_burger",
@@ -99,7 +103,8 @@ export const menuData = {
           "id": "chocolate_overload_shake",
           "name": "Chocolate Overload Shake",
           "description": "A decadent chocolate shake served in a chocolate-frosted jar rimmed with chocolate chips, topped with a brownie, whipped cream, and chocolate sauce. Pure indulgence.",
-          "nutritional_info": "Calories: 1200, Protein: 20g, Carbs: 150g, Fat: 60g"
+          "nutritional_info": "Calories: 1200, Protein: 20g, Carbs: 150g, Fat: 60g",
+          "image": "assets/chocolate_overload_shake.png"
         },
         {
           "id": "strawberry_cheesecake_shake",
@@ -122,25 +127,29 @@ export const menuData = {
           "id": "classic_glazed_donut",
           "name": "Classic Glazed Donut",
           "description": "Our signature yeast-risen donut, light and fluffy on the inside and coated with a perfectly sweet, sheer sugar glaze. A timeless classic done right.",
-          "nutritional_info": "Calories: 250, Protein: 4g, Carbs: 30g, Fat: 14g"
+          "nutritional_info": "Calories: 250, Protein: 4g, Carbs: 30g, Fat: 14g",
+          "image": "assets/classic_glazed_donut.png"
         },
         {
           "id": "boston_cream_donut",
           "name": "Boston Cream Donut",
           "description": "A soft donut filled with a rich vanilla custard and topped with a decadent chocolate icing. A delicious combination of cream and chocolate.",
-          "nutritional_info": "Calories: 350, Protein: 5g, Carbs: 45g, Fat: 18g"
+          "nutritional_info": "Calories: 350, Protein: 5g, Carbs: 45g, Fat: 18g",
+          "image": "assets/boston_cream_donut.png"
         },
         {
           "id": "maple_bacon_donut",
           "name": "Maple Bacon Donut",
           "description": "The perfect sweet and savory combination. A fluffy donut with a sweet maple glaze, topped with crispy, savory bacon bits. An unforgettable treat.",
-          "nutritional_info": "Calories: 400, Protein: 8g, Carbs: 40g, Fat: 22g"
+          "nutritional_info": "Calories: 400, Protein: 8g, Carbs: 40g, Fat: 22g",
+          "image": "assets/maple_bacon_donut.png"
         },
         {
           "id": "cinnamon_sugar_twist",
           "name": "Cinnamon Sugar Twist",
           "description": "A twisted, fluffy donut generously coated in a classic blend of cinnamon and sugar. Simple, aromatic, and wonderfully comforting.",
-          "nutritional_info": "Calories: 300, Protein: 4g, Carbs: 38g, Fat: 16g"
+          "nutritional_info": "Calories: 300, Protein: 4g, Carbs: 38g, Fat: 16g",
+          "image": "assets/cinnamon_sugar_twist.png"
         }
       ]
     },
@@ -191,16 +200,4 @@ export const menuData = {
       ]
     }
   ]
-};
-
-export const imageMap = {
-  "garlic_parmesan_fries": "https://r2.flowith.net/files/o/1756659711823-golden_fries_with_parmesan_and_aioli_index_0@1024x1024.png",
-  "bruschetta_duo": "https://r2.flowith.net/files/o/1756659737109-toasted_bruschetta_topped_appetizers_index_1@1024x1024.png",
-  "crispy_calamari_rings": "https://r2.flowith.net/files/o/1756659773683-golden_calamari_rings_appetizer_index_2@1024x1024.png",
-  "classic_dose_burger": "https://r2.flowith.net/files/o/1756659715016-beef_burger_food_photography_index_3@1024x1024.png",
-  "chocolate_overload_shake": "https://r2.flowith.net/files/o/1756659741095-monster_shake_dessert_photography_index_4@1024x1024.png",
-  "classic_glazed_donut": "https://r2.flowith.net/files/o/1756659718924-perfect_glazed_donut_index_5@1024x1024.png",
-  "boston_cream_donut": "https://r2.flowith.net/files/o/1756659705512-boston_cream_donut_closeup_index_6@1024x1024.png",
-  "maple_bacon_donut": "https://r2.flowith.net/files/o/1756659762810-maple_bacon_donut_flat_lay_index_7@1024x1024.png",
-  "cinnamon_sugar_twist": "https://r2.flowith.net/files/o/1756659781887-cinnamon_sugar_donut_closeup_index_8@1024x1024.png"
-};
+}
