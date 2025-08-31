@@ -9,7 +9,12 @@ const state = {
 };
 
 async function initApp() {
+    const loaderContainer = document.getElementById('loader-container');
+
     try {
+        // Simulate a delay for demonstration purposes
+        await new Promise(resolve => setTimeout(resolve, 1500));
+
         const response = await fetch('data/menu.json');
         if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`);
@@ -23,6 +28,10 @@ async function initApp() {
         const menuContent = document.getElementById('menu-content');
         if (menuContent) {
             menuContent.innerHTML = '<p class="text-center text-red-500">Failed to load menu. Please try again later.</p>';
+        }
+    } finally {
+        if (loaderContainer) {
+            loaderContainer.style.display = 'none';
         }
     }
 }
