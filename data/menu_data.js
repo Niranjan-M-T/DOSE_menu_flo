@@ -1,0 +1,206 @@
+export const menuData = {
+  "menu_categories": [
+    {
+      "category_name": "Starters",
+      "items": [
+        {
+          "id": "garlic_parmesan_fries",
+          "name": "Garlic Parmesan Fries",
+          "description": "Crispy golden fries tossed in savory garlic butter and a generous coating of grated Parmesan cheese, served with a zesty aioli dip. The perfect start to any meal.",
+          "nutritional_info": "Calories: 450, Protein: 8g, Carbs: 50g, Fat: 25g"
+        },
+        {
+          "id": "bruschetta_duo",
+          "name": "Bruschetta Duo",
+          "description": "Toasted artisan bread slices, one topped with a classic mix of fresh tomatoes, basil, and garlic, the other with a creamy mushroom and thyme spread. A delightful taste of Italy.",
+          "nutritional_info": "Calories: 320, Protein: 7g, Carbs: 40g, Fat: 15g"
+        },
+        {
+          "id": "crispy_calamari_rings",
+          "name": "Crispy Calamari Rings",
+          "description": "Tender calamari rings lightly battered and fried to a perfect golden brown, served with a tangy marinara sauce and a fresh lemon wedge. An irresistible seaside classic.",
+          "nutritional_info": "Calories: 380, Protein: 18g, Carbs: 25g, Fat: 22g"
+        }
+      ]
+    },
+    {
+      "category_name": "Burgers",
+      "items": [
+        {
+          "id": "classic_dose_burger",
+          "name": "Classic DOSE Burger",
+          "description": "A juicy, flame-grilled 1/3 lb beef patty with melted American cheese, crisp lettuce, ripe tomatoes, onions, and our signature DOSE sauce on a toasted sesame bun. A timeless favorite.",
+          "nutritional_info": "Calories: 650, Protein: 35g, Carbs: 45g, Fat: 35g"
+        },
+        {
+          "id": "spicy_chicken_burger",
+          "name": "Spicy Chicken Burger",
+          "description": "A crispy fried chicken thigh coated in a fiery spice blend, topped with jalapeño slaw and a cooling chipotle mayo. This burger packs a flavorful punch.",
+          "nutritional_info": "Calories: 580, Protein: 30g, Carbs: 50g, Fat: 30g"
+        },
+        {
+          "id": "veggie_portobello_burger",
+          "name": "Veggie Portobello Burger",
+          "description": "A large, marinated and grilled portobello mushroom cap with melted provolone cheese, roasted red peppers, and a basil pesto aioli on a whole wheat bun. A vegetarian delight.",
+          "nutritional_info": "Calories: 490, Protein: 15g, Carbs: 55g, Fat: 22g"
+        }
+      ]
+    },
+    {
+      "category_name": "Sandwiches",
+      "items": [
+        {
+          "id": "turkey_club_sandwich",
+          "name": "Turkey Club Sandwich",
+          "description": "A triple-decker masterpiece with roasted turkey breast, crispy bacon, lettuce, tomato, and mayonnaise layered between slices of toasted sourdough. Served with a pickle spear.",
+          "nutritional_info": "Calories: 720, Protein: 40g, Carbs: 60g, Fat: 35g"
+        },
+        {
+          "id": "caprese_panini",
+          "name": "Caprese Panini",
+          "description": "Fresh mozzarella, ripe tomatoes, and fragrant basil pesto pressed between slices of rustic Italian bread until golden brown and melted. Simple, fresh, and delicious.",
+          "nutritional_info": "Calories: 550, Protein: 20g, Carbs: 45g, Fat: 30g"
+        },
+        {
+          "id": "roast_beef_cheddar_melt",
+          "name": "Roast Beef & Cheddar Melt",
+          "description": "Thinly sliced roast beef piled high with caramelized onions and sharp cheddar cheese, all melted together on grilled rye bread. A hearty and satisfying choice.",
+          "nutritional_info": "Calories: 680, Protein: 38g, Carbs: 40g, Fat: 40g"
+        }
+      ]
+    },
+    {
+      "category_name": "Pasta",
+      "items": [
+        {
+          "id": "creamy_fettuccine_alfredo",
+          "name": "Creamy Fettuccine Alfredo",
+          "description": "Classic fettuccine pasta tossed in a rich and creamy Parmesan cheese and butter sauce. A comforting dish that never disappoints, topped with fresh parsley.",
+          "nutritional_info": "Calories: 850, Protein: 25g, Carbs: 90g, Fat: 45g"
+        },
+        {
+          "id": "spaghetti_bolognese",
+          "name": "Spaghetti Bolognese",
+          "description": "A hearty, slow-simmered meat sauce made with beef, pork, and tomatoes, served over a bed of spaghetti. A true taste of Italian home cooking.",
+          "nutritional_info": "Calories: 750, Protein: 35g, Carbs: 85g, Fat: 30g"
+        },
+        {
+          "id": "pesto_penne_with_chicken",
+          "name": "Pesto Penne with Chicken",
+          "description": "Penne pasta and grilled chicken breast tossed in a vibrant basil pesto sauce with cherry tomatoes and a sprinkle of pine nuts. Fresh, light, and full of flavor.",
+          "nutritional_info": "Calories: 680, Protein: 40g, Carbs: 70g, Fat: 28g"
+        }
+      ]
+    },
+    {
+      "category_name": "Monster Shakes",
+      "items": [
+        {
+          "id": "chocolate_overload_shake",
+          "name": "Chocolate Overload Shake",
+          "description": "A decadent chocolate shake served in a chocolate-frosted jar rimmed with chocolate chips, topped with a brownie, whipped cream, and chocolate sauce. Pure indulgence.",
+          "nutritional_info": "Calories: 1200, Protein: 20g, Carbs: 150g, Fat: 60g"
+        },
+        {
+          "id": "strawberry_cheesecake_shake",
+          "name": "Strawberry Cheesecake Shake",
+          "description": "A creamy milkshake blended with cheesecake and strawberries, in a vanilla-frosted jar with a graham cracker crumb rim. Topped with a slice of cheesecake and fresh strawberries.",
+          "nutritional_info": "Calories: 1100, Protein: 18g, Carbs: 130g, Fat: 55g"
+        },
+        {
+          "id": "caramel_popcorn_crunch_shake",
+          "name": "Caramel Popcorn Crunch Shake",
+          "description": "A salted caramel shake in a caramel-drizzled jar, topped with a mountain of whipped cream, caramel popcorn, and more caramel sauce. A sweet and salty dream.",
+          "nutritional_info": "Calories: 1150, Protein: 15g, Carbs: 140g, Fat: 58g"
+        }
+      ]
+    },
+    {
+      "category_name": "Donuts",
+      "items": [
+        {
+          "id": "classic_glazed_donut",
+          "name": "Classic Glazed Donut",
+          "description": "Our signature yeast-risen donut, light and fluffy on the inside and coated with a perfectly sweet, sheer sugar glaze. A timeless classic done right.",
+          "nutritional_info": "Calories: 250, Protein: 4g, Carbs: 30g, Fat: 14g"
+        },
+        {
+          "id": "boston_cream_donut",
+          "name": "Boston Cream Donut",
+          "description": "A soft donut filled with a rich vanilla custard and topped with a decadent chocolate icing. A delicious combination of cream and chocolate.",
+          "nutritional_info": "Calories: 350, Protein: 5g, Carbs: 45g, Fat: 18g"
+        },
+        {
+          "id": "maple_bacon_donut",
+          "name": "Maple Bacon Donut",
+          "description": "The perfect sweet and savory combination. A fluffy donut with a sweet maple glaze, topped with crispy, savory bacon bits. An unforgettable treat.",
+          "nutritional_info": "Calories: 400, Protein: 8g, Carbs: 40g, Fat: 22g"
+        },
+        {
+          "id": "cinnamon_sugar_twist",
+          "name": "Cinnamon Sugar Twist",
+          "description": "A twisted, fluffy donut generously coated in a classic blend of cinnamon and sugar. Simple, aromatic, and wonderfully comforting.",
+          "nutritional_info": "Calories: 300, Protein: 4g, Carbs: 38g, Fat: 16g"
+        }
+      ]
+    },
+     {
+      "category_name": "Tea",
+      "items": [
+        {
+          "id": "english_breakfast_tea",
+          "name": "English Breakfast Tea",
+          "description": "A robust, full-bodied blend of black teas that goes perfectly with milk and sugar. The quintessential morning brew to start your day right.",
+          "nutritional_info": "Calories: 5, Protein: 0g, Carbs: 1g, Fat: 0g"
+        },
+        {
+          "id": "chamomile_lavender_tea",
+          "name": "Chamomile & Lavender Tea",
+          "description": "A calming, caffeine-free herbal infusion of chamomile flowers and fragrant lavender. Perfect for relaxing and unwinding any time of day.",
+          "nutritional_info": "Calories: 0, Protein: 0g, Carbs: 0g, Fat: 0g"
+        },
+        {
+          "id": "iced_peach_green_tea",
+          "name": "Iced Peach Green Tea",
+          "description": "Refreshing and lightly sweet, our iced green tea is infused with natural peach flavor and served over ice with a fresh peach slice. A perfect summer cooler.",
+          "nutritional_info": "Calories: 90, Protein: 0g, Carbs: 22g, Fat: 0g"
+        }
+      ]
+    },
+    {
+      "category_name": "Cold Drinks",
+      "items": [
+        {
+          "id": "classic_cold_brew",
+          "name": "Classic Cold Brew",
+          "description": "Our signature coffee steeped in cold water for 18 hours, resulting in a super-smooth, low-acidity coffee with a rich, chocolatey flavor profile. Served over ice.",
+          "nutritional_info": "Calories: 10, Protein: 1g, Carbs: 2g, Fat: 0g"
+        },
+        {
+          "id": "strawberry_lemonade",
+          "name": "Fresh Strawberry Lemonade",
+          "description": "A refreshing blend of freshly squeezed lemons and muddled sweet strawberries, creating the perfect balance of tart and sweet. A vibrant taste of summer.",
+          "nutritional_info": "Calories: 150, Protein: 1g, Carbs: 38g, Fat: 0g"
+        },
+        {
+          "id": "iced_caramel_macchiato",
+          "name": "Iced Caramel Macchiato",
+          "description": "A beautiful layered drink with rich espresso, cold milk, and a sweet vanilla syrup base, all topped with a buttery caramel drizzle. An indulgent treat.",
+          "nutritional_info": "Calories: 250, Protein: 8g, Carbs: 37g, Fat: 7g"
+        }
+      ]
+    }
+  ]
+};
+
+export const imageMap = {
+  "garlic_parmesan_fries": "https://r2.flowith.net/files/o/1756659711823-golden_fries_with_parmesan_and_aioli_index_0@1024x1024.png",
+  "bruschetta_duo": "https://r2.flowith.net/files/o/1756659737109-toasted_bruschetta_topped_appetizers_index_1@1024x1024.png",
+  "crispy_calamari_rings": "https://r2.flowith.net/files/o/1756659773683-golden_calamari_rings_appetizer_index_2@1024x1024.png",
+  "classic_dose_burger": "https://r2.flowith.net/files/o/1756659715016-beef_burger_food_photography_index_3@1024x1024.png",
+  "chocolate_overload_shake": "https://r2.flowith.net/files/o/1756659741095-monster_shake_dessert_photography_index_4@1024x1024.png",
+  "classic_glazed_donut": "https://r2.flowith.net/files/o/1756659718924-perfect_glazed_donut_index_5@1024x1024.png",
+  "boston_cream_donut": "https://r2.flowith.net/files/o/1756659705512-boston_cream_donut_closeup_index_6@1024x1024.png",
+  "maple_bacon_donut": "https://r2.flowith.net/files/o/1756659762810-maple_bacon_donut_flat_lay_index_7@1024x1024.png",
+  "cinnamon_sugar_twist": "https://r2.flowith.net/files/o/1756659781887-cinnamon_sugar_donut_closeup_index_8@1024x1024.png"
+};

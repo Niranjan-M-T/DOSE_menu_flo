@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOSE cafe</title>
+    <script src="https://cdn.tailwindcss.com?plugins=typography"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+</head>
+<body class="bg-cream text-coffee-dark antialiased">
+
+    <!-- Landing Section -->
+    <header id="home" class="h-screen w-full flex flex-col justify-center items-center text-center p-8 bg-gradient-to-br from-cream to-tan relative">
+        <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/light-paper-fibers.png')] opacity-40"></div>
+        <div class="relative z-10">
+            <h1 class="font-display text-7xl md:text-9xl font-bold text-coffee-dark tracking-tighter mb-4">DOSE cafe</h1>
+            <p class="max-w-xl mx-auto text-lg md:text-xl text-coffee-light font-light mb-6">
+                Step into a world of warmth and flavor. At DOSE, we believe in crafting moments of joy, one cup and one plate at a time. Relax, connect, and savor the good things in life.
+            </p>
+            <div class="bg-white/50 backdrop-blur-sm rounded-lg p-3 inline-flex items-center gap-3 text-coffee-dark shadow-sm mb-8">
+                <i data-lucide="wifi"></i>
+                <span class="font-medium">WiFi Password:</span>
+                <span class="font-mono bg-tan/50 px-2 py-1 rounded">DoseOfJoy</span>
+            </div>
+            <div>
+                <a href="#menu" id="view-menu-btn" class="bg-accent-orange text-white py-3 px-8 rounded-full text-lg font-semibold shadow-lg hover:bg-orange-700 transition-all duration-300 transform hover:scale-105">
+                    View Our Menu
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Menu Section -->
+    <main id="menu" class="w-full py-16 md:py-24 px-4 md:px-8">
+        <nav id="category-nav" class="sticky top-0 z-30 bg-cream/80 backdrop-blur-md py-4 mb-12 shadow-md overflow-x-auto">
+            <div id="category-links" class="max-w-7xl mx-auto flex justify-center items-center gap-4 md:gap-8 px-4">
+                <!-- Category links will be dynamically inserted here -->
+            </div>
+        </nav>
+
+        <div id="menu-content" class="max-w-7xl mx-auto">
+            <!-- Menu categories and items will be dynamically inserted here -->
+        </div>
+    </main>
+
+    <!-- Modal -->
+    <div id="item-modal" class="fixed inset-0 z-50 bg-black/70 backdrop-blur-sm flex justify-center items-center opacity-0 pointer-events-none transition-opacity duration-300">
+        <div id="modal-content" class="bg-cream rounded-xl shadow-2xl w-11/12 max-w-4xl max-h-[90vh] flex flex-col md:flex-row relative transform scale-95 transition-transform duration-300">
+            <button id="close-modal-btn" class="absolute top-3 right-3 text-coffee-light hover:text-accent-orange transition-colors z-10">
+                <i data-lucide="x" class="w-8 h-8"></i>
+            </button>
+
+            <div id="modal-image-container" class="w-full md:w-1/2 h-64 md:h-auto bg-tan flex-shrink-0 rounded-t-xl md:rounded-l-xl md:rounded-r-none">
+                <img id="modal-image" src="" alt="" class="w-full h-full object-cover rounded-t-xl md:rounded-l-xl md:rounded-r-none">
+            </div>
+
+            <div class="w-full md:w-1/2 p-6 md:p-8 overflow-y-auto">
+                <h2 id="modal-name" class="font-display text-3xl md:text-4xl font-bold text-coffee-dark mb-3"></h2>
+                <p id="modal-description" class="text-coffee-light mb-6 font-light"></p>
+                
+                <h3 class="text-xl font-semibold text-coffee-dark mb-3 border-b border-tan pb-2">Nutritional Information</h3>
+                <div id="modal-nutrition" class="text-coffee-light">
+                    <!-- Nutrition details will be dynamically inserted here -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script type="module" src="app.js"></script>
+</body>
+</html>
