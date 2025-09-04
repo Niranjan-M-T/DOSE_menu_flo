@@ -1,6 +1,9 @@
+import { init3D } from './3d-animation.js';
+
 document.addEventListener('DOMContentLoaded', () => {
     lucide.createIcons();
     initApp();
+    init3D();
 });
 
 const state = {

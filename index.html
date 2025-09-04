@@ -117,6 +117,7 @@
 
     <!-- Landing Section -->
     <header id="home" class="h-screen w-full flex flex-col justify-center items-center text-center p-8 bg-gradient-to-br from-cream to-tan relative">
+        <canvas id="3d-canvas" class="absolute top-0 left-0 w-full h-full"></canvas>
         <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/light-paper-fibers.png')] opacity-40"></div>
         <div class="relative z-10">
             <h1 class="font-display text-7xl md:text-9xl font-bold text-coffee-light tracking-tighter mb-4 animate-on-load" style="transition-delay: 100ms;">DOSE cafe</h1>
@@ -174,6 +175,9 @@
     </div>
 
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three/examples/js/loaders/GLTFLoader.js"></script>
+    <script type="module" src="3d-animation.js"></script>
     <script type="module" src="app.js"></script>
 </body>
 </html>
