@@ -11,6 +11,7 @@ const state = {
 async function initApp() {
 
     document.body.classList.add('loading');
+    runLandingAnimation();
 
     try {
         // Simulate a delay for demonstration purposes
@@ -24,6 +25,7 @@ async function initApp() {
         renderMenu();
         setupEventListeners();
         setupScrollSpy();
+        setupScrollAnimations();
     } catch (error) {
         console.error("Could not load menu data:", error);
         const menuContent = document.getElementById('menu-content');
@@ -59,6 +61,7 @@ function renderMenu() {
         const title = document.createElement('h2');
         title.className = 'font-display text-4xl md:text-5xl font-bold text-coffee-dark mb-8 border-b-2 border-tan pb-4';
         title.textContent = category.category_name;
+        title.dataset.animation = 'slide-in-left';
         section.appendChild(title);
 
         const grid = document.createElement('div');
@@ -69,6 +72,7 @@ function renderMenu() {
             card.className = 'menu-item-card bg-white rounded-lg shadow-md overflow-hidden cursor-pointer flex flex-col';
             card.dataset.itemId = item.id;
             card.dataset.categoryName = category.category_name;
+            card.dataset.animation = 'reveal';
 
             if (item.image) {
                 card.innerHTML = `
@@ -190,5 +194,30 @@ function setupScrollSpy() {
 
     sections.forEach(section => {
         observer.observe(section);
+    });
+}
+
+
+function runLandingAnimation() {
+    const elements = document.querySelectorAll('.animate-on-load');
+    // A short timeout to ensure elements are rendered before animation starts
+    setTimeout(() => {
+        elements.forEach(el => el.classList.add('is-visible'));
+    }, 100);
+}
+
+function setupScrollAnimations() {
+    const animatedElements = document.querySelectorAll('[data-animation]');
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('is-visible');
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.1 });
+
+    animatedElements.forEach(element => {
+        observer.observe(element);
     });
 }
