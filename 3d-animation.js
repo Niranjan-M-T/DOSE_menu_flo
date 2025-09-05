@@ -83,19 +83,39 @@ function onScroll() {
     if (!model) return;
 
     const scrollY = window.scrollY;
-    // Animate only within the landing section (first viewport height)
-    const scrollPercent = Math.min(scrollY / window.innerHeight, 1);
+    const landingContent = document.getElementById('landing-content');
 
-    // Use easing function for smoother transition
-    const easedScroll = 1 - Math.pow(1 - scrollPercent, 3); // easeOutCubic
+    // Animate only within the first 80% of the landing section
+    const scrollPercent = Math.min(scrollY / (window.innerHeight * 0.8), 1);
 
-    // Animate position
-    model.position.x = -20 + easedScroll * 40; // Move from left to right across the screen
-    model.position.z = -5 + easedScroll * 5;  // Move slightly forward
+    // Easing function for a smooth acceleration
+    const easedScroll = scrollPercent * scrollPercent; // easeInQuad
 
-    // Animate rotation
-    model.rotation.y = -Math.PI / 4 + easedScroll * (Math.PI * 1.5); // Rotate 270 degrees
-    model.rotation.x = easedScroll * Math.PI / 8; // Tilt slightly
+    // --- 3D Model Animation ---
+
+    // Move the cup up and slightly back
+    model.position.y = -7 + easedScroll * 12;
+    model.position.z = -5 - easedScroll * 5;
+
+    // Rotate the cup
+    model.rotation.y = easedScroll * Math.PI / 2;
+    model.rotation.x = -easedScroll * Math.PI / 8;
+
+    // --- Content Animation ---
+    if (landingContent) {
+        // Start revealing content after scrolling 40% of the way
+        const contentScrollStart = 0.4;
+        const contentScrollDuration = 0.4; // animate over 40% of scroll height
+
+        let contentProgress = 0;
+        if (scrollPercent >= contentScrollStart) {
+            contentProgress = Math.min((scrollPercent - contentScrollStart) / contentScrollDuration, 1);
+        }
+
+        // Apply styles
+        landingContent.style.opacity = contentProgress;
+        landingContent.style.transform = `translateY(${50 - contentProgress * 50}px)`;
+    }
 }
 
 function animate() {

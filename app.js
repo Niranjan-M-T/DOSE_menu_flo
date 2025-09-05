@@ -14,7 +14,6 @@ const state = {
 async function initApp() {
 
     document.body.classList.add('loading');
-    runLandingAnimation();
 
     try {
         // Simulate a delay for demonstration purposes
@@ -198,15 +197,6 @@ function setupScrollSpy() {
     sections.forEach(section => {
         observer.observe(section);
     });
-}
-
-
-function runLandingAnimation() {
-    const elements = document.querySelectorAll('.animate-on-load');
-    // A short timeout to ensure elements are rendered before animation starts
-    setTimeout(() => {
-        elements.forEach(el => el.classList.add('is-visible'));
-    }, 100);
 }
 
 function setupScrollAnimations() {
