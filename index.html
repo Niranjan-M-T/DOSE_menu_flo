@@ -116,23 +116,26 @@
 
 
     <!-- Landing Section -->
-    <header id="home" class="h-screen w-full flex flex-col justify-center items-center text-center p-8 bg-gradient-to-br from-cream to-tan relative">
+    <header id="home" class="h-screen w-full relative">
         <canvas id="3d-canvas" class="absolute top-0 left-0 w-full h-full"></canvas>
         <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/light-paper-fibers.png')] opacity-40"></div>
-        <div class="relative z-10">
-            <h1 class="font-display text-7xl md:text-9xl font-bold text-coffee-light tracking-tighter mb-4 animate-on-load" style="transition-delay: 100ms;">DOSE cafe</h1>
-            <p class="max-w-xl mx-auto text-lg md:text-xl text-coffee-dark font-light mb-6 animate-on-load" style="transition-delay: 200ms;">
-                Step into a world of warmth and flavor. At DOSE, we believe in crafting moments of joy, one cup and one plate at a time. Relax, connect, and savor the good things in life.
-            </p>
-            <div class="bg-white/50 backdrop-blur-sm rounded-lg p-3 inline-flex items-center gap-3 text-coffee-dark shadow-sm mb-8 animate-on-load" style="transition-delay: 300ms;">
-                <i data-lucide="wifi"></i>
-                <span class="font-medium">WiFi Password:</span>
-                <span class="font-mono bg-tan/50 px-2 py-1 rounded">DoseOfJoy</span>
-            </div>
-            <div>
-                <a href="#menu" id="view-menu-btn" class="bg-accent-orange text-white py-3 px-8 rounded-full text-lg font-semibold shadow-lg hover:bg-orange-700 transition-all duration-300 transform hover:scale-105 animate-on-load" style="transition-delay: 400ms;">
-                    View Our Menu
-                </a>
+
+        <div id="landing-content-container" class="absolute inset-0 flex flex-col justify-center items-center text-center p-8">
+            <div id="landing-content" class="relative z-10">
+                <h1 class="font-display text-7xl md:text-9xl font-bold text-coffee-light tracking-tighter mb-4 animate-on-load" style="transition-delay: 100ms;">DOSE cafe</h1>
+                <p class="max-w-xl mx-auto text-lg md:text-xl text-coffee-dark font-light mb-6 animate-on-load" style="transition-delay: 200ms;">
+                    Step into a world of warmth and flavor. At DOSE, we believe in crafting moments of joy, one cup and one plate at a time. Relax, connect, and savor the good things in life.
+                </p>
+                <div class="bg-white/50 backdrop-blur-sm rounded-lg p-3 inline-flex items-center gap-3 text-coffee-dark shadow-sm mb-8 animate-on-load" style="transition-delay: 300ms;">
+                    <i data-lucide="wifi"></i>
+                    <span class="font-medium">WiFi Password:</span>
+                    <span class="font-mono bg-tan/50 px-2 py-1 rounded">DoseOfJoy</span>
+                </div>
+                <div>
+                    <a href="#menu" id="view-menu-btn" class="bg-accent-orange text-white py-3 px-8 rounded-full text-lg font-semibold shadow-lg hover:bg-orange-700 transition-all duration-300 transform hover:scale-105 animate-on-load" style="transition-delay: 400ms;">
+                        View Our Menu
+                    </a>
+                </div>
             </div>
         </div>
     </header>
