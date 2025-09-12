@@ -1,7 +1,75 @@
 document.addEventListener('DOMContentLoaded', () => {
     lucide.createIcons();
     initApp();
+    initScrollytelling();
 });
+
+function initScrollytelling() {
+    const scrollyVideo = document.getElementById('scrolly-video');
+    const video = document.getElementById('cup-video');
+    const canvas = document.getElementById('video-canvas');
+    const scrollPrompt = document.getElementById('scroll-prompt');
+    const textOverlay = document.getElementById('video-text-overlay');
+    const context = canvas.getContext('2d');
+
+    let videoFrameCount = 0;
+    let videoDuration = 0;
+
+    function drawFrame() {
+        context.drawImage(video, 0, 0, canvas.width, canvas.height);
+    }
+
+    video.addEventListener('canplay', () => {
+        videoDuration = video.duration;
+        const frameRate = 30;
+        videoFrameCount = Math.floor(videoDuration * frameRate);
+
+        canvas.width = video.videoWidth;
+        canvas.height = video.videoHeight;
+
+        video.currentTime = 0;
+    }, { once: true });
+
+    video.addEventListener('seeked', () => {
+        requestAnimationFrame(drawFrame);
+    });
+
+    window.addEventListener('scroll', () => {
+        const scrollableHeight = scrollyVideo.offsetHeight - window.innerHeight;
+        const scrollTop = window.pageYOffset - scrollyVideo.offsetTop;
+        let scrollFraction = scrollTop / scrollableHeight;
+
+        if (scrollFraction < 0) scrollFraction = 0;
+        if (scrollFraction > 1) scrollFraction = 1;
+
+        if (scrollFraction > 0) {
+            scrollPrompt.style.opacity = '0';
+        } else {
+            scrollPrompt.style.opacity = '1';
+        }
+
+        const frameIndex = Math.min(
+            videoFrameCount - 1,
+            Math.floor(scrollFraction * videoFrameCount)
+        );
+
+        const time = (frameIndex / videoFrameCount) * videoDuration;
+
+        if (video.currentTime !== time) {
+            video.currentTime = time;
+        }
+
+        if (scrollFraction > 0.8) {
+            textOverlay.style.opacity = (scrollFraction - 0.8) / 0.2;
+        } else {
+            textOverlay.style.opacity = 0;
+        }
+    });
+
+    video.addEventListener('seeked', () => {
+        context.drawImage(video, 0, 0, canvas.width, canvas.height);
+    });
+}
 
 const state = {
     currentItem: null,
