@@ -12,29 +12,63 @@ function initScrollytelling() {
     const textOverlay = document.getElementById('video-text-overlay');
     const context = canvas.getContext('2d');
 
+    const frames = [];
     let videoFrameCount = 0;
     let videoDuration = 0;
+    let isPreloading = true;
 
-    function drawFrame() {
-        context.drawImage(video, 0, 0, canvas.width, canvas.height);
+    function updateCanvas(frameIndex) {
+        if (frames[frameIndex]) {
+            context.clearRect(0, 0, canvas.width, canvas.height);
+            context.drawImage(frames[frameIndex], 0, 0, canvas.width, canvas.height);
+        }
+    }
+
+    function preloadFrames() {
+        const frameRate = 30; // Assumption
+        videoFrameCount = Math.floor(videoDuration * frameRate);
+        const offscreenCanvas = document.createElement('canvas');
+        offscreenCanvas.width = canvas.width;
+        offscreenCanvas.height = canvas.height;
+        const offscreenContext = offscreenCanvas.getContext('2d');
+
+        let currentFrame = 0;
+        const captureFrame = () => {
+            if (currentFrame < videoFrameCount) {
+                const time = (currentFrame / videoFrameCount) * videoDuration;
+                video.currentTime = time;
+            } else {
+                isPreloading = false;
+                // Draw first frame
+                updateCanvas(0);
+            }
+        };
+
+        video.addEventListener('seeked', () => {
+            offscreenContext.drawImage(video, 0, 0, offscreenCanvas.width, offscreenCanvas.height);
+            const img = new Image();
+            img.src = offscreenCanvas.toDataURL('image/jpeg');
+            img.onload = () => {
+                frames[currentFrame] = img;
+                currentFrame++;
+                captureFrame();
+            };
+        });
+
+        captureFrame();
+
     }
 
     video.addEventListener('canplay', () => {
         videoDuration = video.duration;
-        const frameRate = 30;
-        videoFrameCount = Math.floor(videoDuration * frameRate);
-
         canvas.width = video.videoWidth;
         canvas.height = video.videoHeight;
-
-        video.currentTime = 0;
+        preloadFrames();
     }, { once: true });
 
-    video.addEventListener('seeked', () => {
-        requestAnimationFrame(drawFrame);
-    });
-
     window.addEventListener('scroll', () => {
+        if (isPreloading) return;
+
         const scrollableHeight = scrollyVideo.offsetHeight - window.innerHeight;
         const scrollTop = window.pageYOffset - scrollyVideo.offsetTop;
         let scrollFraction = scrollTop / scrollableHeight;
@@ -53,21 +87,14 @@ function initScrollytelling() {
             Math.floor(scrollFraction * videoFrameCount)
         );
 
-        const time = (frameIndex / videoFrameCount) * videoDuration;
+        requestAnimationFrame(() => updateCanvas(frameIndex));
 
-        if (video.currentTime !== time) {
-            video.currentTime = time;
-        }
 
         if (scrollFraction > 0.8) {
             textOverlay.style.opacity = (scrollFraction - 0.8) / 0.2;
         } else {
             textOverlay.style.opacity = 0;
         }
-    });
-
-    video.addEventListener('seeked', () => {
-        context.drawImage(video, 0, 0, canvas.width, canvas.height);
     });
 }
 
