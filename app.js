@@ -56,6 +56,7 @@ function initScrollytelling() {
         });
 
         captureFrame();
+
     }
 
     video.addEventListener('canplay', () => {
@@ -87,6 +88,7 @@ function initScrollytelling() {
         );
 
         requestAnimationFrame(() => updateCanvas(frameIndex));
+
 
         if (scrollFraction > 0.8) {
             textOverlay.style.opacity = (scrollFraction - 0.8) / 0.2;
