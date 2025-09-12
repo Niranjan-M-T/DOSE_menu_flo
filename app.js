@@ -17,6 +17,7 @@ function initScrollytelling() {
     video.addEventListener('loadedmetadata', () => {
         canvas.width = video.videoWidth;
         canvas.height = video.videoHeight;
+
         handleScroll(); // Set initial frame
         requestAnimationFrame(render); // Start rendering loop
     }, { once: true });
@@ -25,6 +26,7 @@ function initScrollytelling() {
         context.drawImage(video, 0, 0, canvas.width, canvas.height);
         requestAnimationFrame(render);
     }
+
 
     function handleScroll() {
         const scrollableHeight = scrollyVideo.offsetHeight - window.innerHeight;
@@ -35,7 +37,9 @@ function initScrollytelling() {
         if (scrollFraction > 1) scrollFraction = 1;
 
         if (video.duration) {
+
             video.currentTime = scrollFraction * video.duration;
+
         }
 
         // Handle scroll prompt visibility
