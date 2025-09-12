@@ -8,21 +8,21 @@
           "name": "Garlic Parmesan Fries",
           "description": "Crispy golden fries tossed in savory garlic butter and a generous coating of grated Parmesan cheese, served with a zesty aioli dip. The perfect start to any meal.",
           "nutritional_info": "Calories: 450, Protein: 8g, Carbs: 50g, Fat: 25g",
-          "image": "assets/garlic_parmesan_fries.png"
+          "image": "data/garlic_parmesan.jpg"
         },
         {
           "id": "bruschetta_duo",
           "name": "Bruschetta Duo",
           "description": "Toasted artisan bread slices, one topped with a classic mix of fresh tomatoes, basil, and garlic, the other with a creamy mushroom and thyme spread. A delightful taste of Italy.",
           "nutritional_info": "Calories: 320, Protein: 7g, Carbs: 40g, Fat: 15g",
-          "image": "assets/bruschetta_duo.png"
+          "image": "data/brushetta.jpg"
         },
         {
           "id": "crispy_calamari_rings",
           "name": "Crispy Calamari Rings",
           "description": "Tender calamari rings lightly battered and fried to a perfect golden brown, served with a tangy marinara sauce and a fresh lemon wedge. An irresistible seaside classic.",
           "nutritional_info": "Calories: 380, Protein: 18g, Carbs: 25g, Fat: 22g",
-          "image": "assets/crispy_calamari_rings.png"
+          "image": "data/calamari.jpg"
         }
       ]
     },

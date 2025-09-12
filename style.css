@@ -1,3 +1,9 @@
+/* Parallax effect for menu item images */
+.menu-item-card .parallax-img {
+	will-change: transform;
+	transition: transform 0.4s cubic-bezier(0.4,0,0.2,1);
+	transform: translateY(0);
+}
 /* Video Landing Section Styles */
 #video-landing {
 	position: relative;

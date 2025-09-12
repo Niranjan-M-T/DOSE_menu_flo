@@ -92,7 +92,7 @@ function renderMenu() {
 
         const grid = document.createElement('div');
         grid.className = 'grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 md:gap-8';
-        
+
         category.items.forEach(item => {
             const card = document.createElement('div');
             card.className = 'menu-item-card bg-white rounded-lg shadow-md overflow-hidden cursor-pointer flex flex-col';
@@ -102,7 +102,7 @@ function renderMenu() {
             if (item.image) {
                 card.innerHTML = `
                     <div class="h-48 bg-tan">
-                        <img src="${item.image}" alt="${item.name}" class="w-full h-full object-cover">
+                        <img src="${item.image}" alt="${item.name}" class="w-full h-full object-cover parallax-img">
                     </div>
                     <div class="p-4 flex-grow flex flex-col justify-between">
                         <h3 class="text-xl font-semibold text-coffee-dark">${item.name}</h3>
@@ -122,6 +122,28 @@ function renderMenu() {
         section.appendChild(grid);
         menuContent.appendChild(section);
     });
+
+    setupParallaxImages();
+}
+
+// Parallax effect for menu item images
+function setupParallaxImages() {
+    const images = document.querySelectorAll('.parallax-img');
+    function parallax() {
+        images.forEach(img => {
+            const rect = img.getBoundingClientRect();
+            const windowHeight = window.innerHeight;
+            // Only apply if image is in viewport
+            if (rect.top < windowHeight && rect.bottom > 0) {
+                // Calculate parallax offset
+                const percent = (rect.top + rect.height / 2 - windowHeight / 2) / windowHeight;
+                img.style.transform = `translateY(${percent * 24}px)`;
+            }
+        });
+    }
+    window.addEventListener('scroll', parallax);
+    window.addEventListener('resize', parallax);
+    parallax();
 }
 
 function setupEventListeners() {
