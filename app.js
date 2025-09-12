@@ -6,69 +6,26 @@ document.addEventListener('DOMContentLoaded', () => {
 
 function initScrollytelling() {
     const scrollyVideo = document.getElementById('scrolly-video');
+    if (!scrollyVideo) return;
+
     const video = document.getElementById('cup-video');
     const canvas = document.getElementById('video-canvas');
     const scrollPrompt = document.getElementById('scroll-prompt');
     const textOverlay = document.getElementById('video-text-overlay');
     const context = canvas.getContext('2d');
 
-    const frames = [];
-    let videoFrameCount = 0;
-    let videoDuration = 0;
-    let isPreloading = true;
-
-    function updateCanvas(frameIndex) {
-        if (frames[frameIndex]) {
-            context.clearRect(0, 0, canvas.width, canvas.height);
-            context.drawImage(frames[frameIndex], 0, 0, canvas.width, canvas.height);
-        }
-    }
-
-    function preloadFrames() {
-        const frameRate = 30; // Assumption
-        videoFrameCount = Math.floor(videoDuration * frameRate);
-        const offscreenCanvas = document.createElement('canvas');
-        offscreenCanvas.width = canvas.width;
-        offscreenCanvas.height = canvas.height;
-        const offscreenContext = offscreenCanvas.getContext('2d');
-
-        let currentFrame = 0;
-        const captureFrame = () => {
-            if (currentFrame < videoFrameCount) {
-                const time = (currentFrame / videoFrameCount) * videoDuration;
-                video.currentTime = time;
-            } else {
-                isPreloading = false;
-                // Draw first frame
-                updateCanvas(0);
-            }
-        };
-
-        video.addEventListener('seeked', () => {
-            offscreenContext.drawImage(video, 0, 0, offscreenCanvas.width, offscreenCanvas.height);
-            const img = new Image();
-            img.src = offscreenCanvas.toDataURL('image/jpeg');
-            img.onload = () => {
-                frames[currentFrame] = img;
-                currentFrame++;
-                captureFrame();
-            };
-        });
-
-        captureFrame();
-
-    }
-
-    video.addEventListener('canplay', () => {
-        videoDuration = video.duration;
+    video.addEventListener('loadedmetadata', () => {
         canvas.width = video.videoWidth;
         canvas.height = video.videoHeight;
-        preloadFrames();
+        // Draw the very first frame
+        video.currentTime = 0.01; // Seeking to 0 may not trigger 'seeked' in some browsers
     }, { once: true });
 
-    window.addEventListener('scroll', () => {
-        if (isPreloading) return;
+    video.addEventListener('seeked', () => {
+        context.drawImage(video, 0, 0, canvas.width, canvas.height);
+    });
 
+    function handleScroll() {
         const scrollableHeight = scrollyVideo.offsetHeight - window.innerHeight;
         const scrollTop = window.pageYOffset - scrollyVideo.offsetTop;
         let scrollFraction = scrollTop / scrollableHeight;
@@ -76,26 +33,43 @@ function initScrollytelling() {
         if (scrollFraction < 0) scrollFraction = 0;
         if (scrollFraction > 1) scrollFraction = 1;
 
-        if (scrollFraction > 0) {
-            scrollPrompt.style.opacity = '0';
-        } else {
-            scrollPrompt.style.opacity = '1';
+        if (video.duration) {
+            // Update video time, the 'seeked' event will trigger the drawing
+            const targetTime = scrollFraction * video.duration;
+            // Only update if time is different to avoid unnecessary seeking
+            if (Math.abs(targetTime - video.currentTime) > 0.1) {
+                video.currentTime = targetTime;
+            }
         }
 
-        const frameIndex = Math.min(
-            videoFrameCount - 1,
-            Math.floor(scrollFraction * videoFrameCount)
-        );
-
-        requestAnimationFrame(() => updateCanvas(frameIndex));
-
-
-        if (scrollFraction > 0.8) {
-            textOverlay.style.opacity = (scrollFraction - 0.8) / 0.2;
-        } else {
-            textOverlay.style.opacity = 0;
+        // Handle scroll prompt visibility
+        if (scrollPrompt) {
+            if (scrollFraction > 0.05) {
+                scrollPrompt.style.opacity = '0';
+            } else {
+                scrollPrompt.style.opacity = '1';
+            }
         }
-    });
+
+        // Handle text overlay visibility
+        if (textOverlay) {
+            const fadeInStart = 0.6;
+            const fadeInEnd = 0.8;
+            if (scrollFraction > fadeInStart) {
+                const opacity = Math.min((scrollFraction - fadeInStart) / (fadeInEnd - fadeInStart), 1);
+                textOverlay.style.opacity = opacity;
+            } else {
+                textOverlay.style.opacity = 0;
+            }
+        }
+    }
+
+    window.addEventListener('scroll', handleScroll);
+
+    // Ensure metadata is loaded if video is already ready
+    if (video.readyState >= 2) { // HAVE_CURRENT_DATA
+        video.dispatchEvent(new Event('loadedmetadata'));
+    }
 }
 
 const state = {
