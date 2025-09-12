@@ -1,7 +1,100 @@
 document.addEventListener('DOMContentLoaded', () => {
     lucide.createIcons();
     initApp();
+    initScrollytelling();
 });
+
+function initScrollytelling() {
+    const scrollyVideo = document.getElementById('scrolly-video');
+    const video = document.getElementById('cup-video');
+    const canvas = document.getElementById('video-canvas');
+    const scrollPrompt = document.getElementById('scroll-prompt');
+    const textOverlay = document.getElementById('video-text-overlay');
+    const context = canvas.getContext('2d');
+
+    const frames = [];
+    let videoFrameCount = 0;
+    let videoDuration = 0;
+    let isPreloading = true;
+
+    function updateCanvas(frameIndex) {
+        if (frames[frameIndex]) {
+            context.clearRect(0, 0, canvas.width, canvas.height);
+            context.drawImage(frames[frameIndex], 0, 0, canvas.width, canvas.height);
+        }
+    }
+
+    function preloadFrames() {
+        const frameRate = 30; // Assumption
+        videoFrameCount = Math.floor(videoDuration * frameRate);
+        const offscreenCanvas = document.createElement('canvas');
+        offscreenCanvas.width = canvas.width;
+        offscreenCanvas.height = canvas.height;
+        const offscreenContext = offscreenCanvas.getContext('2d');
+
+        let currentFrame = 0;
+        const captureFrame = () => {
+            if (currentFrame < videoFrameCount) {
+                const time = (currentFrame / videoFrameCount) * videoDuration;
+                video.currentTime = time;
+            } else {
+                isPreloading = false;
+                // Draw first frame
+                updateCanvas(0);
+            }
+        };
+
+        video.addEventListener('seeked', () => {
+            offscreenContext.drawImage(video, 0, 0, offscreenCanvas.width, offscreenCanvas.height);
+            const img = new Image();
+            img.src = offscreenCanvas.toDataURL('image/jpeg');
+            img.onload = () => {
+                frames[currentFrame] = img;
+                currentFrame++;
+                captureFrame();
+            };
+        });
+
+        captureFrame();
+    }
+
+    video.addEventListener('canplay', () => {
+        videoDuration = video.duration;
+        canvas.width = video.videoWidth;
+        canvas.height = video.videoHeight;
+        preloadFrames();
+    }, { once: true });
+
+    window.addEventListener('scroll', () => {
+        if (isPreloading) return;
+
+        const scrollableHeight = scrollyVideo.offsetHeight - window.innerHeight;
+        const scrollTop = window.pageYOffset - scrollyVideo.offsetTop;
+        let scrollFraction = scrollTop / scrollableHeight;
+
+        if (scrollFraction < 0) scrollFraction = 0;
+        if (scrollFraction > 1) scrollFraction = 1;
+
+        if (scrollFraction > 0) {
+            scrollPrompt.style.opacity = '0';
+        } else {
+            scrollPrompt.style.opacity = '1';
+        }
+
+        const frameIndex = Math.min(
+            videoFrameCount - 1,
+            Math.floor(scrollFraction * videoFrameCount)
+        );
+
+        requestAnimationFrame(() => updateCanvas(frameIndex));
+
+        if (scrollFraction > 0.8) {
+            textOverlay.style.opacity = (scrollFraction - 0.8) / 0.2;
+        } else {
+            textOverlay.style.opacity = 0;
+        }
+    });
+}
 
 const state = {
     currentItem: null,
