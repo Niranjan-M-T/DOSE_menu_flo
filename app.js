@@ -17,13 +17,16 @@ function initScrollytelling() {
     video.addEventListener('loadedmetadata', () => {
         canvas.width = video.videoWidth;
         canvas.height = video.videoHeight;
-        // Draw the very first frame
-        video.currentTime = 0.01; // Seeking to 0 may not trigger 'seeked' in some browsers
+
+        handleScroll(); // Set initial frame
+        requestAnimationFrame(render); // Start rendering loop
     }, { once: true });
 
-    video.addEventListener('seeked', () => {
+    function render() {
         context.drawImage(video, 0, 0, canvas.width, canvas.height);
-    });
+        requestAnimationFrame(render);
+    }
+
 
     function handleScroll() {
         const scrollableHeight = scrollyVideo.offsetHeight - window.innerHeight;
@@ -34,12 +37,9 @@ function initScrollytelling() {
         if (scrollFraction > 1) scrollFraction = 1;
 
         if (video.duration) {
-            // Update video time, the 'seeked' event will trigger the drawing
-            const targetTime = scrollFraction * video.duration;
-            // Only update if time is different to avoid unnecessary seeking
-            if (Math.abs(targetTime - video.currentTime) > 0.1) {
-                video.currentTime = targetTime;
-            }
+
+            video.currentTime = scrollFraction * video.duration;
+
         }
 
         // Handle scroll prompt visibility
